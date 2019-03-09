@@ -158,10 +158,9 @@ parse_hex_string(const char *s, struct xt_string_info *info)
 			info->pattern[sindex] = s[i];
 			i++;
 		}
-		sindex++;
-		/* Check if index would get too large for the next iteration */
-		if (sindex > XT_STRING_MAX_PATTERN_SIZE - 1)
+		if (sindex > XT_STRING_MAX_PATTERN_SIZE)
 			xtables_error(PARAMETER_PROBLEM, "STRING too long \"%s\"", s);
+		sindex++;
 	}
 	info->patlen = sindex;
 }
